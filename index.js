@@ -7,6 +7,10 @@ const server = app.listen(process.env.PORT || 3001, () => {
 
 const wss = appWs(server);
 
+const ss = new WebSocket.Server({
+    server: app.listen(3001)
+})
+
 // setInterval(() => {
 //     wss.broadcast({ n: Math.random()});
 // }, 2000)

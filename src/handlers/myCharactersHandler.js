@@ -4,7 +4,7 @@ const myCharactersHandler = (resp) => {
 
     console.log('char go');
     // resp.json({ teste: personagens });
-    resp.json({ teste: 'rdx1' });
+    resp.json({ teste: 'rdx123' });
 }
 
 module.exports = myCharactersHandler;
