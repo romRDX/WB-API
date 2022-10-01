@@ -1,7 +1,9 @@
 const app = require('./src/app');
 const appWs = require('./src/app-ws');
+
+const port = process.env.PORT || 3001;
  
-const server = app.listen(process.env.PORT || 3001, () => {
+const server = app.listen(port, () => {
     console.log(`App Express is running!`);
 })
 
