@@ -17,7 +17,6 @@ const server = app.listen(port, () => {
 
 const express = require('express');
 const PORT = process.env.PORT || 3005;
-const INDEX = '/index.html';
 
 function onMessage(ws, data) {
 
@@ -34,18 +33,15 @@ function onMessage(ws, data) {
     ws.send(`recebido!`);
 }
 
-const wsServer = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+const wsServer = express().listen(PORT, () => console.log(`Listening on ${PORT}`));
 
+const { Server } = require('ws');
 
-  const { Server } = require('ws');
+const wss = new Server({ wsServer });
 
-  const wss = new Server({ wsServer });
-
-  wss.on('connection', (ws) => {
+wss.on('connection', (ws) => {
     console.log('Client connected');
     ws.on('message', data => onMessage(ws, data));
     ws.on('close', () => console.log('Client disconnected'));
-  });
+});
 
