@@ -1,4 +1,4 @@
-const tribes = require('../data/tribes');
+const tribes = require('../codedData/tribes');
 
 const tribesHandler = (resp) => {
     resp.json({ tribes });

@@ -4,7 +4,20 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const myCharactersHandler = require('./handlers/myCharactersHandler');
-const tribesHandler = require('./handlers/tribesHandler');
+const tribesHandler = require('./handlers/tribesHandler')
+
+// teste pg
+const { Client } = require('pg');
+
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+client.connect();
+
  
 const app = express();
  
@@ -17,7 +30,17 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.post('/login', (req, res, next) => {
-    res.json({ token: '123456' });
+
+    let x = '';
+
+    client.query('SELECT Name FROM WB_USER;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          x = JSON.stringify(row);
+        }
+        client.end();
+    });
+    res.json({ token: '123456', teste: x });
 });
 
 app.get('/characters', (req, res, next) => {
