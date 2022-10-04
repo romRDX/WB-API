@@ -5,6 +5,17 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const myCharactersHandler = require('./handlers/myCharactersHandler');
 const tribesHandler = require('./handlers/tribesHandler')
+ 
+const app = express();
+ 
+app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+ 
+app.use(helmet());
+ 
+app.use(express.json());
+ 
+app.use(morgan('dev'));
+
 
 // teste pg
 const { Client } = require('pg');
@@ -18,17 +29,6 @@ const client = new Client({
 
 client.connect();
 
- 
-const app = express();
- 
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
- 
-app.use(helmet());
- 
-app.use(express.json());
- 
-app.use(morgan('dev'));
-
 app.post('/login', (req, res, next) => {
 
     let x = '';
@@ -37,10 +37,11 @@ app.post('/login', (req, res, next) => {
         if (err) throw err;
         for (let row of res.rows) {
           x = JSON.stringify(row);
+          res.json({ token: '123456', teste: x });
         }
         client.end();
     });
-    res.json({ token: '123456', teste: x });
+    
 });
 
 app.get('/characters', (req, res, next) => {
