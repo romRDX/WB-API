@@ -48,6 +48,7 @@ app.post('/login', (req, resp, next) => {
     const queryParams = JSON.parse(req.body.params);
     console.log("ZZ: ", queryParams.email);
 
+    try {
     client.query(queryText, [queryParams.email], (err, res) => {
         // if (err) throw err;        
         console.log("ERROR1: ", err);
@@ -66,6 +67,9 @@ app.post('/login', (req, resp, next) => {
         //   resp.json({ token: '123456', teste: row });
         // }
     });
+    } catch (err){
+        console.log("ERROR3: ", err);
+    }
 
     // client.query(queryText).then((err, res) => {
     //     console.log("XXXXXXXXXXXXX: ", res);
