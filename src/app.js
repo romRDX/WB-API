@@ -50,8 +50,9 @@ app.post('/login', (req, resp, next) => {
 
     client.query(queryText, [queryParams.email], (err, res) => {
         // if (err) throw err;        
+        console.log("ERROR1: ", err);
         if (err) {
-            console.log("ERROR: ", err);
+            console.log("ERROR2: ", err);
         };        
 
         console.log("AAA: ", res.rows[0].email);
