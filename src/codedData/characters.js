@@ -66,7 +66,7 @@ const icones = [
 const personagens = [
     {
         id: 2536734,
-        nome: 'Renekton x1',
+        nome: 'Renekton-1',
         nivel: 10,
         classe: 'Crocodilo',
         atributos: {STR: 5, DEX: 4, CON: 4, INT: 1, TOU: 2, AGI: 3}, 
@@ -109,7 +109,7 @@ const personagens = [
     },
     {
         id: 2536735,
-        nome: 'Renekton x2',
+        nome: 'Renekton-2',
         nivel: 10,
         classe: 'Crocodilo',
         atributos: {STR: 5, DEX: 4, CON: 4, INT: 1, TOU: 2, AGI: 3}, 
@@ -152,7 +152,7 @@ const personagens = [
     },
     {
         id: 2536736,
-        nome: 'Renekton x3',
+        nome: 'Renekton-3',
         nivel: 10,
         classe: 'Crocodilo',
         atributos: {STR: 5, DEX: 4, CON: 4, INT: 1, TOU: 2, AGI: 3}, 
