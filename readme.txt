@@ -5,3 +5,4 @@ heroku pg:psql postgresql-clean-07397 --app warbeasts-api
 
 \dt
 \d+ tabela
+heroku logs --tail

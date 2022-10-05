@@ -8,7 +8,8 @@ const tribesHandler = require('./handlers/tribesHandler')
  
 const app = express();
  
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+// app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+app.use(cors({ origin: true }));
  
 app.use(helmet());
  
@@ -18,6 +19,9 @@ app.use(morgan('dev'));
 
 
 // teste pg
+
+console.log("XXXXXXXXXXXXXX: ", process.env.CORS_ORIGIN);
+
 const { Client } = require('pg');
 
 const client = new Client({
