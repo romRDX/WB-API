@@ -58,6 +58,7 @@ app.post('/login', (req, resp, next) => {
         console.log("BBB: ", res.rows);
         if(res.rows[0].email == queryParams.email){
             console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
+            resp.json({ authentication: true, authCode: '123' });
         }
             // resp.json({ userData: res.rows });
         // for (let row of res.rows) {
