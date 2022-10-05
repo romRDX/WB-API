@@ -50,7 +50,7 @@ app.post('/login', (req, resp, next) => {
             console.log("YYYYYYYYYYYYYYYYY: ", res);
           x = JSON.stringify(row);
           console.log("ZZZZZZZZZZZZZZZZZZZZZ: ", x);
-        //   res.json({ token: '123456', teste: x });
+          resp.json({ token: '123456', teste: x });
         }
         // client.end();
     });
