@@ -35,17 +35,18 @@ client.connect();
 
 app.post('/login', (req, res, next) => {
 
-    let x = '';
+    let x = '1';
 
-    client.query('SELECT Name FROM WB_USER;', (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-          x = JSON.stringify(row);
-          res.json({ token: '123456', teste: x });
-        }
-        client.end();
-    });
+    // client.query('SELECT Name FROM WB_USER;', (err, res) => {
+    //     if (err) throw err;
+    //     for (let row of res.rows) {
+    //       x = JSON.stringify(row);
+    //       res.json({ token: '123456', teste: x });
+    //     }
+    //     client.end();
+    // });
     
+    res.json({ token: '123456', teste: x });
 });
 
 app.get('/characters', (req, res, next) => {
