@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 
 // teste pg
 
-console.log("XXXXXXXXXXXXXX: ", process.env.CORS_ORIGIN);
+
 
 const { Client } = require('pg');
 
@@ -36,17 +36,18 @@ client.connect();
 app.post('/login', (req, res, next) => {
 
     let x = '1';
-
-    // client.query('SELECT Name FROM WB_USER;', (err, res) => {
-    //     if (err) throw err;
-    //     for (let row of res.rows) {
-    //       x = JSON.stringify(row);
-    //       res.json({ token: '123456', teste: x });
-    //     }
-    //     client.end();
-    // });
+    console.log("XXXXXXXXXXXXXX");
+    client.query('SELECT Name FROM WB_USER;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+            console.log("YYYYYYYYYYYYYYYYY");
+          x = JSON.stringify(row);
+          res.json({ token: '123456', teste: x });
+        }
+        // client.end();
+    });
     
-    res.json({ token: '123456', teste: x });
+    // res.json({ token: '123456', teste: x });
 });
 
 app.get('/characters', (req, res, next) => {
