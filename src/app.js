@@ -50,7 +50,7 @@ app.post('/login', (req, resp, next) => {
     client.query(queryText, [queryParams.email], (err, res) => {
         if (err) throw err;        
             
-            if(res.rows[0].email == req.body.params){
+            if(res.rows[0].email == queryParams.email){
                 console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
                 console.log("YYYYYYYYYYYYYYYYYYYYY: ", req.body.params.email);
             }
