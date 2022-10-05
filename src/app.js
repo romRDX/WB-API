@@ -31,10 +31,10 @@ const client = new Client({
     }
 });
 
-client.connect();
+
 
 app.post('/login', (req, res, next) => {
-
+    client.connect();
     let x = '1';
     console.log("XXXXXXXXXXXXXX");
     client.query('SELECT Name FROM WB_USER;', (err, res) => {
