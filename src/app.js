@@ -31,31 +31,33 @@ const client = new Client({
     }
 });
 
-
+client.connect(err => {
+    if (err) {
+        console.error('connection error', err.stack)
+    } else {
+        console.log('connected')
+    }
+});
 
 app.post('/login', (req, resp, next) => {
-    client.connect(err => {
-        if (err) {
-            console.error('connection error', err.stack)
-        } else {
-            console.log('connected')
+    
+    // client.query('SELECT Name FROM WB_USER;', (err, res) => {
+    //     if (err) throw err;
+    //     for (let row of res.rows) {
+    //       resp.json({ token: '123456', teste: row });
+    //     }
+    // });
+
+    const queryText = 'SELECT Name FROM WB_USER;';
+
+    client.query(queryText).then((err, res) => {
+        console.log("XXXXXXXXXXXXX: ", res);
+        if (err) throw err;
+        for (let row of res.rows) {
+          resp.json({ token: '123456', teste: row });
         }
     });
 
-    let x = '1';
-    console.log("XXXXXXXXXXXXXX");
-    client.query('SELECT Name FROM WB_USER;', (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-            console.log("YYYYYYYYYYYYYYYYY: ", res);
-          x = JSON.stringify(row);
-          console.log("ZZZZZZZZZZZZZZZZZZZZZ: ", x);
-          resp.json({ token: '123456', teste: x });
-        }
-        // client.end();
-    });
-    
-    // resp.json({ token: '123456', teste: x });
 });
 
 app.get('/characters', (req, res, next) => {
