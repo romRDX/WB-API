@@ -45,9 +45,12 @@ app.post('/login', (req, resp, next) => {
     
     client.query(queryText, (err, res) => {
         if (err) throw err;
-        for (let row of res.rows) {
-          resp.json({ token: '123456', teste: row });
-        }
+        
+            resp.json({ token: '123456', teste: res });
+        
+        // for (let row of res.rows) {
+        //   resp.json({ token: '123456', teste: row });
+        // }
     });
 
     // client.query(queryText).then((err, res) => {
