@@ -43,16 +43,17 @@ app.post('/login', (req, resp, next) => {
 
     const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
 
-    console.log("XXXX: ", JSON.parse(req.body.params).email);
+    // console.log("XXXX: ", JSON.parse(req.body.params).email);
     // console.log("ZZ: ", resp);
+    const queryParams = JSON.parse(req.body.params);
     
-    client.query(queryText, [req.body.params], (err, res) => {
+    client.query(queryText, [queryParams.email], (err, res) => {
         if (err) throw err;        
             
-            // if(res.rows[0].email == req.body.params){
+            if(res.rows[0].email == req.body.params){
                 console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
                 console.log("YYYYYYYYYYYYYYYYYYYYY: ", req.body.params.email);
-            // }
+            }
             // resp.json({ userData: res.rows });
         // for (let row of res.rows) {
         //   resp.json({ token: '123456', teste: row });
