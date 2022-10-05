@@ -43,7 +43,7 @@ app.post('/login', (req, resp, next) => {
 
     const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
 
-    // console.log("XXXXXXXXXXXXXXXXXXXXX: ", req.body.params);
+    console.log("XXXX: ", req.body.params);
     // console.log("ZZ: ", resp);
     
     client.query(queryText, [req.body.params], (err, res) => {
