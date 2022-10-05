@@ -46,9 +46,13 @@ app.post('/login', (req, resp, next) => {
     // console.log("XXXXXXXXXXXXXXXXXXXXX: ", req.body.params);
     // console.log("ZZ: ", resp);
     
-    client.query(queryText, ["romullo-wb@gmail.com"], (err, res) => {
+    client.query(queryText, [req.body.params], (err, res) => {
         if (err) throw err;        
-            console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
+            
+            if(res.rows[0].email == req.body.params){
+                console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
+                console.log("YYYYYYYYYYYYYYYYYYYYY: ", req.body.params.email);
+            }
             resp.json({ userData: res.rows });
         // for (let row of res.rows) {
         //   resp.json({ token: '123456', teste: row });
