@@ -40,23 +40,23 @@ client.connect(err => {
 });
 
 app.post('/login', (req, resp, next) => {
-    
-    // client.query('SELECT Name FROM WB_USER;', (err, res) => {
-    //     if (err) throw err;
-    //     for (let row of res.rows) {
-    //       resp.json({ token: '123456', teste: row });
-    //     }
-    // });
 
     const queryText = 'SELECT Name FROM WB_USER;';
-
-    client.query(queryText).then((err, res) => {
-        console.log("XXXXXXXXXXXXX: ", res);
+    
+    client.query(queryText, (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
           resp.json({ token: '123456', teste: row });
         }
     });
+
+    // client.query(queryText).then((err, res) => {
+    //     console.log("XXXXXXXXXXXXX: ", res);
+    //     if (err) throw err;
+    //     for (let row of res.rows) {
+    //       resp.json({ token: '123456', teste: row });
+    //     }
+    // });
 
 });
 
