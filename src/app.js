@@ -49,11 +49,11 @@ app.post('/login', (req, resp, next) => {
     client.query(queryText, [req.body.params], (err, res) => {
         if (err) throw err;        
             
-            if(res.rows[0].email == req.body.params){
+            // if(res.rows[0].email == req.body.params){
                 console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
                 console.log("YYYYYYYYYYYYYYYYYYYYY: ", req.body.params.email);
-            }
-            resp.json({ userData: res.rows });
+            // }
+            // resp.json({ userData: res.rows });
         // for (let row of res.rows) {
         //   resp.json({ token: '123456', teste: row });
         // }
