@@ -33,21 +33,28 @@ const client = new Client({
 
 
 
-app.post('/login', (req, res, next) => {
-    client.connect();
+app.post('/login', (req, resp, next) => {
+    client.connect(err => {
+        if (err) {
+            console.error('connection error', err.stack)
+        } else {
+            console.log('connected')
+        }
+    });
+
     let x = '1';
     console.log("XXXXXXXXXXXXXX");
     client.query('SELECT Name FROM WB_USER;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-            console.log("YYYYYYYYYYYYYYYYY");
+            console.log("YYYYYYYYYYYYYYYYY: ", res);
           x = JSON.stringify(row);
-          res.json({ token: '123456', teste: x });
+        //   res.json({ token: '123456', teste: x });
         }
         // client.end();
     });
     
-    // res.json({ token: '123456', teste: x });
+    // resp.json({ token: '123456', teste: x });
 });
 
 app.get('/characters', (req, res, next) => {
