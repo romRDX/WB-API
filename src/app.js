@@ -44,7 +44,7 @@ app.post('/login', (req, resp, next) => {
     const queryText = 'SELECT Name FROM WB_USER;';
 
     console.log("XX: ", req);
-    console.log("XX: ", resp);
+    console.log("ZZ: ", resp);
     
     client.query(queryText, (err, res) => {
         if (err) throw err;        
