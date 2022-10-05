@@ -44,9 +44,10 @@ app.post('/login', (req, resp, next) => {
     const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
 
     // console.log("XXXX: ", JSON.parse(req.body.params).email);
-    // console.log("ZZ: ", resp);
-    const queryParams = JSON.parse(req.body.params);
     
+    const queryParams = JSON.parse(req.body.params);
+    console.log("ZZ: ", queryParams.email);
+
     client.query(queryText, [queryParams.email], (err, res) => {
         if (err) throw err;        
             
