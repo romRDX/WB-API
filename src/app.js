@@ -42,12 +42,13 @@ client.connect(err => {
 app.post('/login', (req, resp, next) => {
 
     const queryText = 'SELECT Name FROM WB_USER;';
+
+    console.log("XX: ", req);
+    console.log("XX: ", resp);
     
     client.query(queryText, (err, res) => {
-        if (err) throw err;
-        
-            resp.json({ token: '123456', teste: res });
-        
+        if (err) throw err;        
+            resp.json({ token: '123456', teste: res.rows });
         // for (let row of res.rows) {
         //   resp.json({ token: '123456', teste: row });
         // }
