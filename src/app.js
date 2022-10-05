@@ -41,14 +41,15 @@ client.connect(err => {
 
 app.post('/login', (req, resp, next) => {
 
-    const queryText = 'SELECT Name FROM WB_USER;';
+    const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
 
-    console.log("XXXXXXXXXXXXXXXXXXXXX: ", req.body.params);
+    // console.log("XXXXXXXXXXXXXXXXXXXXX: ", req.body.params);
     // console.log("ZZ: ", resp);
     
-    client.query(queryText, (err, res) => {
+    client.query(queryText, ["romullo-wb@gmail.com"], (err, res) => {
         if (err) throw err;        
-            resp.json({ token: '123456', teste: res.rows });
+            console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
+            resp.json({ userData: res.rows });
         // for (let row of res.rows) {
         //   resp.json({ token: '123456', teste: row });
         // }
