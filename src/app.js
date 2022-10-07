@@ -42,43 +42,23 @@ client.connect(err => {
 app.post('/login', (req, resp, next) => {
 
     const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
-
-    // console.log("XXXX: ", JSON.parse(req.body.params).email);
     
     const queryParams = JSON.parse(req.body.params);
-    console.log("ZZ: ", queryParams.email);
+    console.log("ZZ: ", queryParams);
 
-    try {
     client.query(queryText, [queryParams.email], (err, res) => {
-        // if (err) throw err;        
-        console.log("ERROR1: ", err);
-        if (err) {
-            console.log("ERROR2: ", err);
-        };        
-
-        console.log("AAA: ", res.rows[0].email);
         console.log("BBB: ", res.rows);
-        if(res.rows[0].email == queryParams.email){
-            console.log("XXXXXXXXXXXXXXXXXXXXX: ", res.rows);
-            resp.json({ authentication: true, authCode: '123' });
+        if(res.rows.length !== 0){
+            if(res.rows[0].email == queryParams.email && res.rows[0].password == queryParams.password){
+                console.log("AAA: ", res.rows[0].password);
+                resp.json({ authentication: true, userData: res.rows[0] });
+            } else {
+                resp.status(400).json('Verifique a sua senha e nome de usuário e tente novamente.');    
+            }
+        } else {
+            resp.status(400).json('Verifique a sua senha e nome de usuário e tente novamente.');
         }
-            // resp.json({ userData: res.rows });
-        // for (let row of res.rows) {
-        //   resp.json({ token: '123456', teste: row });
-        // }
     });
-    } catch (err){
-        console.log("ERROR3: ", err);
-    }
-
-    // client.query(queryText).then((err, res) => {
-    //     console.log("XXXXXXXXXXXXX: ", res);
-    //     if (err) throw err;
-    //     for (let row of res.rows) {
-    //       resp.json({ token: '123456', teste: row });
-    //     }
-    // });
-
 });
 
 app.get('/characters', (req, res, next) => {
