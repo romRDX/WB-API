@@ -18,10 +18,6 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 
-// teste pg
-
-
-
 const { Client } = require('pg');
 
 const client = new Client({
@@ -44,13 +40,10 @@ app.post('/login', (req, resp, next) => {
     const queryText = 'SELECT * FROM WB_USER WHERE Email = $1;';
     
     const queryParams = JSON.parse(req.body.params);
-    console.log("ZZ: ", queryParams);
 
     client.query(queryText, [queryParams.email], (err, res) => {
-        console.log("BBB: ", res.rows);
         if(res.rows.length !== 0){
             if(res.rows[0].email == queryParams.email && res.rows[0].password == queryParams.password){
-                console.log("AAA: ", res.rows[0].password);
                 resp.json({ authentication: true, userData: res.rows[0] });
             } else {
                 resp.status(400).json('Verifique a sua senha e nome de usuário e tente novamente.');    
@@ -62,7 +55,8 @@ app.post('/login', (req, resp, next) => {
 });
 
 app.get('/characters', (req, res, next) => {
-    myCharactersHandler(res);
+    const userId = JSON.parse(req.query[0]).userId;
+    myCharactersHandler(userId, client, res);
 });
 
 app.get('/tribes', (req, res, next) => {
