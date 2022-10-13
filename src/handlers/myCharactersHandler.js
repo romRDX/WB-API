@@ -1,4 +1,6 @@
-const personagens = require('../codedData/characters');
+const returnSelectedItens = require('../codedData/itens');
+const returnSelectedSkills = require('../codedData/skills');
+const returnSelectedTraitss = require('../codedData/traits');
 
 const myCharactersHandler = (userId, client, resp) => {
 
@@ -6,13 +8,20 @@ const myCharactersHandler = (userId, client, resp) => {
 
     client.query(queryText, [userId], (err, res) => {
         if(res.rows.length !== 0){
-            // console.log("111: ",JSON.parse(res.rows[0].atributes).STR);
-            // console.log("111: ", JSON.parse(res.rows[0].skills_id)[2]);
+            
             const characters = res.rows.map((char) => {
                 const atributes = JSON.parse(char.atributes);
-                const skills = JSON.parse(char.skills_id);
-                const traits = JSON.parse(char.traits_id);
-                const itens = JSON.parse(char.itens_id);
+                const skillsIds = JSON.parse(char.skills_id);
+                const traitsIds = JSON.parse(char.traits_id);
+                const itensIds = JSON.parse(char.itens_id);
+
+                delete char.skills_id;
+                delete char.traits_id;
+                delete char.itens_id;
+
+                const skills = returnSelectedSkills(skillsIds);
+                const traits = returnSelectedTraitss(traitsIds);
+                const itens = returnSelectedItens(itensIds);
 
                 return {
                     ...char,
@@ -25,8 +34,7 @@ const myCharactersHandler = (userId, client, resp) => {
 
             resp.json({ userCharacters: characters });
         } else {
-            console.log("error: ");
-            // resp.status(400).json('Verifique a sua senha e nome de usuário e tente novamente.');
+            resp.json({ userCharacters: [] });
         }
     });
     
