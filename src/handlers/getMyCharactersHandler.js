@@ -36,9 +36,7 @@ const myCharactersHandler = (userId, client, resp) => {
         } else {
             resp.json({ userCharacters: [] });
         }
-    });
-    
-    
+    }); 
 }
 
 module.exports = myCharactersHandler;

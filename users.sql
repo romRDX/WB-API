@@ -42,3 +42,5 @@ ALTER TABLE wb_player_characters DROP COLUMN class;
 INSERT INTO wb_player_characters (id, name, user_id, level, portrait, model, special_skill_id, class_id, race_id, atributes, skills_id, traits_id, itens_id) VALUES (1, 'Mufasa', 1, 1, 'https://ibb.co/k8nhS1z', 'https://ibb.co/k8nhS1z', 1, 1, 1, '{STR: 5, DEX: 4, CON: 4, INT: 1, TOU: 2, AGI: 3}', '[1,2,3]', '[1,2,3]', '[1,2,3]');
 
 UPDATE wb_player_characters SET atributes = '{"STR": 5, "DEX": 4, "CON": 4, "INT": 1, "TOU": 2, "AGI": 3}' WHERE id = 1;
+
+UPDATE wb_player_characters SET skills_id = '[1,2,3]' WHERE id = 1;

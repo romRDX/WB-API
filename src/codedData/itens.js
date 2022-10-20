@@ -34,15 +34,38 @@ const itens = [
         INT: 0,
         TOU: 0,
         AGI: 0,
+    },
+    {
+        id: 4,
+        name: 'Runa da agilidade',
+        icon: 'https://i.ibb.co/h9Rwq5b/ability-domination-rune11.jpg',
+        description: 'Uma runa que melhora seus movimentos.',
+        STR: 0,
+        DEX: 0,
+        CON: 2,
+        INT: 0,
+        TOU: 0,
+        AGI: 0,
     }
 ];
 
 const returnSelectedItens = (itensIds) => {
-    return itens.map((iten) => {
-        if(itensIds.includes(iten.id)){
-            return iten;
-        }
-    });
+    
+    if(itensIds == "all"){
+        return itens;
+    }
+
+    const itensArray = [];
+
+    itensIds.forEach((item) => {
+        const itemData = itens.find((data) => data.id == item);
+        itensArray.push(itemData);
+    })
+
+    console.log("y: ", itensIds);
+    console.log("X: ", itensArray);
+
+    return itensArray;
 };
 
 module.exports = returnSelectedItens;

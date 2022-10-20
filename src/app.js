@@ -3,8 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const myCharactersHandler = require('./handlers/myCharactersHandler');
-const tribesHandler = require('./handlers/tribesHandler')
+
+const getMyCharacters = require('./handlers/getMyCharactersHandler');
+const getItens = require('./handlers/getItensHandler')
+const updateCharacterItens = require('./handlers/updateCharacterItensHandler');
  
 const app = express();
  
@@ -56,11 +58,27 @@ app.post('/login', (req, resp, next) => {
 
 app.get('/characters', (req, res, next) => {
     const userId = JSON.parse(req.query[0]).userId;
-    myCharactersHandler(userId, client, res);
+    getMyCharacters(userId, client, res);
 });
 
-app.get('/tribes', (req, res, next) => {
-    tribesHandler(res);
+app.get('/itens', (req, res, next) => {
+    getItens(res);
 });
- 
+
+app.put('/itens/update', (req, res, next) => {
+    const queryParams = JSON.parse(req.body.params);
+    updateCharacterItens(queryParams, client, res);
+});
+
+app.put('/skills/update', (req, res, next) => {
+    const queryParams = JSON.parse(req.body.params);
+    updateCharacterItens(queryParams, client, res);
+});
+
+app.put('/traits/update', (req, res, next) => {
+    const queryParams = JSON.parse(req.body.params);
+    console.log("PUT");
+    updateCharacterItens(queryParams, client, res);
+});
+
 module.exports = app;
