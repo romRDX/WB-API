@@ -43,4 +43,8 @@ INSERT INTO wb_player_characters (id, name, user_id, level, portrait, model, spe
 
 UPDATE wb_player_characters SET atributes = '{"STR": 5, "DEX": 4, "CON": 4, "INT": 1, "TOU": 2, "AGI": 3}' WHERE id = 1;
 
-UPDATE wb_player_characters SET skills_id = '[1,2,3]' WHERE id = 1;
+UPDATE wb_player_characters SET atributes = '{"STR": 290, "DEX": 340, "CON": 230, "INT": 360, "TOU": 230, "AGI": 350}' WHERE id = 1;
+
+UPDATE wb_player_characters SET itens_id = '[1,2,3,0]' WHERE id = 1;
+
+SELECT * FROM wb_player_characters WHERE id = 1;

@@ -5,8 +5,15 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const getMyCharacters = require('./handlers/getMyCharactersHandler');
+
 const getItens = require('./handlers/getItensHandler')
 const updateCharacterItens = require('./handlers/updateCharacterItensHandler');
+
+const getSkills = require('./handlers/getSkillsHandler')
+const updateCharacterSkills = require('./handlers/updateCharacterSkillsHandler');
+
+const getTraits = require('./handlers/getTraitsHandler')
+const updateCharacterTraits = require('./handlers/updateCharacterTraitsHandler');
  
 const app = express();
  
@@ -56,11 +63,14 @@ app.post('/login', (req, resp, next) => {
     });
 });
 
+// CHARACTERS
 app.get('/characters', (req, res, next) => {
     const userId = JSON.parse(req.query[0]).userId;
     getMyCharacters(userId, client, res);
 });
 
+
+// ITEMS
 app.get('/itens', (req, res, next) => {
     getItens(res);
 });
@@ -70,14 +80,21 @@ app.put('/itens/update', (req, res, next) => {
     updateCharacterItens(queryParams, client, res);
 });
 
-app.put('/skills/update', (req, res, next) => {
-    const queryParams = JSON.parse(req.body.params);
-    updateCharacterItens(queryParams, client, res);
+
+// SKILLS
+app.get('/skills', (req, res, next) => {
+    getSkills(res);
 });
 
+app.put('/skills/update', (req, res, next) => {
+    const queryParams = JSON.parse(req.body.params);
+    updateCharacterSkills(queryParams, client, res);
+});
+
+
+// TRAITS
 app.put('/traits/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
-    console.log("PUT");
     updateCharacterItens(queryParams, client, res);
 });
 

@@ -1,7 +1,7 @@
 const returnSelectedItens = require('../codedData/itens');
 
 const itensHandler = (resp) => {
-    resp.json({ itens:  returnSelectedItens("all")});
+    resp.status(200).json({ itens:  returnSelectedItens("all")});
 }
 
 module.exports = itensHandler;

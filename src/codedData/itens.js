@@ -42,10 +42,10 @@ const itens = [
         description: 'Uma runa que melhora seus movimentos.',
         STR: 0,
         DEX: 0,
-        CON: 2,
+        CON: 0,
         INT: 0,
         TOU: 0,
-        AGI: 0,
+        AGI: 2,
     }
 ];
 
@@ -61,9 +61,6 @@ const returnSelectedItens = (itensIds) => {
         const itemData = itens.find((data) => data.id == item);
         itensArray.push(itemData);
     })
-
-    console.log("y: ", itensIds);
-    console.log("X: ", itensArray);
 
     return itensArray;
 };

@@ -29,15 +29,32 @@ const traits = [
         type: "heal",
         cooldown: 0,
         effect: null
+    },
+    {
+        id: 4,
+        name: 'Teste',
+        icon: 'https://i.ibb.co/VwJjdYR/Ability-druid-improvedtreeform.webp',
+        description: 'Seus ferimentos se curam com o tempo.',
+        value: 3,
+        type: "heal",
+        cooldown: 0,
+        effect: null
     }
 ];
 
 const returnSelectedTraitss = (traitsIds) => {
-    return traits.map((trait) => {
-        if(traitsIds.includes(trait.id)){
-            return trait;
-        }
-    });
+    if(traitsIds == "all"){
+        return traits;
+    }
+
+    const traitsArray = [];
+
+    traitssIds.forEach((trait) => {
+        const traitData = traits.find((data) => data.id == trait);
+        traitsArray.push(traitData);
+    })
+
+    return traitsArray;
 };
 
 module.exports = returnSelectedTraitss;
