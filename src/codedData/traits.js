@@ -16,7 +16,7 @@ const traits = [
         icon: 'https://i.ibb.co/NK4b6kP/Ability-druid-healinginstincts.webp',
         description: 'Você sempre está cheio de energia.',
         value: 10,
-        type: "energy-reduction",
+        type: "energy-cost-reduction",
         cooldown: 0,
         effect: null
     },
@@ -32,24 +32,24 @@ const traits = [
     },
     {
         id: 4,
-        name: 'Teste',
-        icon: 'https://i.ibb.co/VwJjdYR/Ability-druid-improvedtreeform.webp',
-        description: 'Seus ferimentos se curam com o tempo.',
-        value: 3,
-        type: "heal",
+        name: 'Garras afiadas',
+        icon: 'https://i.ibb.co/svfjfj2/skill4.webp',
+        description: 'Seus ataques com garras são mais fortes.',
+        value: 20,
+        type: "damage-buff",
         cooldown: 0,
         effect: null
     }
 ];
 
-const returnSelectedTraitss = (traitsIds) => {
+const returnSelectedTraits = (traitsIds) => {
     if(traitsIds == "all"){
         return traits;
     }
 
     const traitsArray = [];
 
-    traitssIds.forEach((trait) => {
+    traitsIds.forEach((trait) => {
         const traitData = traits.find((data) => data.id == trait);
         traitsArray.push(traitData);
     })
@@ -57,4 +57,4 @@ const returnSelectedTraitss = (traitsIds) => {
     return traitsArray;
 };
 
-module.exports = returnSelectedTraitss;
+module.exports = returnSelectedTraits;

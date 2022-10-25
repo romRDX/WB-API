@@ -93,9 +93,13 @@ app.put('/skills/update', (req, res, next) => {
 
 
 // TRAITS
+app.get('/traits', (req, res, next) => {
+    getTraits(res);
+});
+
 app.put('/traits/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
-    updateCharacterItens(queryParams, client, res);
+    updateCharacterTraits(queryParams, client, res);
 });
 
 module.exports = app;

@@ -1,12 +1,12 @@
-const updateCharacterSkillsHandler = (data, client, res) => {
-    
-    const queryText = 'UPDATE wb_player_characters SET skills_id = $1 WHERE user_id = $2';
-    const skillsIds = JSON.stringify(data.dataArray.map((skill) => skill == undefined ? 0 : skill.id));
+const updateCharacterTraitsHandler = (data, client, res) => {
 
-    client.query(queryText, [skillsIds, data.userId], () => {
+    const queryText = 'UPDATE wb_player_characters SET traits_id = $1 WHERE user_id = $2';
+    const traitsIds = JSON.stringify(data.dataArray.map((trait) => trait == undefined ? 0 : trait.id));
+
+    client.query(queryText, [traitsIds, data.userId], () => {
         res.status(200);
     });
     console.log("ABC");
 }
 
-module.exports = updateCharacterSkillsHandler;
+module.exports = updateCharacterTraitsHandler;
