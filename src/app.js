@@ -4,16 +4,19 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-const getMyCharacters = require('./handlers/getMyCharactersHandler');
+const getMyCharacters = require('./modules/characters/getMyCharactersHandler');
+const createCharacter = require('./modules/characters/createCharacterHandler');
 
-const getItens = require('./handlers/getItensHandler')
-const updateCharacterItens = require('./handlers/updateCharacterItensHandler');
+const getRaces = require('./modules/races/getRacesHandler');
 
-const getSkills = require('./handlers/getSkillsHandler')
-const updateCharacterSkills = require('./handlers/updateCharacterSkillsHandler');
+const getItens = require('./modules/itens/getItensHandler')
+const updateCharacterItens = require('./modules/itens/updateCharacterItensHandler');
 
-const getTraits = require('./handlers/getTraitsHandler')
-const updateCharacterTraits = require('./handlers/updateCharacterTraitsHandler');
+const getSkills = require('./modules/skills/getSkillsHandler')
+const updateCharacterSkills = require('./modules/skills/updateCharacterSkillsHandler');
+
+const getTraits = require('./modules/traits/getTraitsHandler')
+const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHandler');
  
 const app = express();
  
@@ -63,10 +66,22 @@ app.post('/login', (req, resp, next) => {
     });
 });
 
+// RACES
+
+app.get('/races', (req, res, next) => {
+    getRaces(res);
+});
+
 // CHARACTERS
 app.get('/characters', (req, res, next) => {
     const userId = JSON.parse(req.query[0]).userId;
     getMyCharacters(userId, client, res);
+});
+
+app.post('/characters/new', (req, res, next) => {
+    const characterData = JSON.parse(req.body.params);
+    // console.log("NEW CHAR: ", characterData);
+    createCharacter(characterData, client, res);
 });
 
 
@@ -77,6 +92,7 @@ app.get('/itens', (req, res, next) => {
 
 app.put('/itens/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
+    // console.log("ITENS QUERYP: ", queryParams);
     updateCharacterItens(queryParams, client, res);
 });
 
@@ -88,6 +104,7 @@ app.get('/skills', (req, res, next) => {
 
 app.put('/skills/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
+    // console.log("SKILLS QUERYP: ", queryParams);
     updateCharacterSkills(queryParams, client, res);
 });
 
