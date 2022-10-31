@@ -1,6 +1,3 @@
-const returnSelectedItens = require('../../codedData/itens');
-const returnSelectedSkills = require('../../codedData/skills');
-const returnSelectedTraitss = require('../../codedData/traits');
 const returnSelectedRaces = require('../../codedData/races');
 
 const createCharacterHandler = (characterData, client, resp) => {
@@ -16,18 +13,13 @@ const createCharacterHandler = (characterData, client, resp) => {
             classData = race.classes[i];
         }
     }
-    
-    const attributes = JSON.stringify(classData.attributes);
-    console.log("RACE: ", race);
-    console.log("CLASS: ", attributes);
-    // console.log("CLASS: ", JSON.parse(classData.attributes));
 
     const queryText = "INSERT INTO wb_player_characters (name, user_id, level, portrait, model, special_skill_id, class_id, race_id, atributes, skills_id, traits_id, itens_id) VALUES ( $1, $2, 1, $3, $4, 1, $5, $6, $7, '[0,0,0,0]', '[0,0,0,0]', '[0,0,0,0]')";
 
     client.query(queryText, [name, playerId, classData.portrait, classData.model, classId, raceId, JSON.stringify(classData.attributes)], (err, res) => {
         console.log("RES: ", res);
         console.log("ERR: ", err);
-        resp.status(200);
+        resp.status(200).json({ success: true});
     }); 
 }
 

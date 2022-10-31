@@ -6,9 +6,8 @@ const updateCharacterItensHandler = (data, client, res) => {
     const itensIds = JSON.stringify(data.dataArray.map((item) => item == undefined ? 0 : item.id));
 
     client.query(queryText, [itensIds, data.userId, data.characterId], () => {
-        res.status(200);
+        res.status(200).json({ success: true });
     });
-    console.log("ABC");
 }
 
 module.exports = updateCharacterItensHandler;

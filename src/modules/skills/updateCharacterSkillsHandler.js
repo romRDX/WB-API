@@ -4,9 +4,8 @@ const updateCharacterSkillsHandler = (data, client, res) => {
     const skillsIds = JSON.stringify(data.dataArray.map((skill) => skill == undefined ? 0 : skill.id));
 
     client.query(queryText, [skillsIds, data.userId, data.characterId], () => {
-        res.status(200);
+        res.status(200).json({ success: true });
     });
-    console.log("ABC");
 }
 
 module.exports = updateCharacterSkillsHandler;

@@ -10,6 +10,8 @@ const deleteCharacter = require('./modules/characters/deleteCharacterHandler');
 
 const getRaces = require('./modules/races/getRacesHandler');
 
+const getMaps = require('./modules/maps/getMapsHandler');
+
 const getItens = require('./modules/itens/getItensHandler')
 const updateCharacterItens = require('./modules/itens/updateCharacterItensHandler');
 
@@ -66,6 +68,13 @@ app.post('/login', (req, resp, next) => {
         }
     });
 });
+
+// MAPS
+
+app.get('/maps', (req, res, next) => {
+    getMaps(res);
+});
+
 
 // RACES
 
