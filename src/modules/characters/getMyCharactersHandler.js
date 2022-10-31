@@ -6,7 +6,7 @@ const returnSelectedRaces = require('../../codedData/races');
 const myCharactersHandler = (userId, client, resp) => {
 
     const queryText = 'SELECT * FROM wb_player_characters WHERE user_id = $1';
-
+    console.log("ID: ", userId);
     client.query(queryText, [userId], (err, res) => {
         if(res.rows.length !== 0){
             

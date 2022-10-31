@@ -6,6 +6,7 @@ const morgan = require('morgan');
 
 const getMyCharacters = require('./modules/characters/getMyCharactersHandler');
 const createCharacter = require('./modules/characters/createCharacterHandler');
+const deleteCharacter = require('./modules/characters/deleteCharacterHandler');
 
 const getRaces = require('./modules/races/getRacesHandler');
 
@@ -20,8 +21,8 @@ const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHan
  
 const app = express();
  
-// app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
-app.use(cors());
+app.use(cors({ origin: '*' }));
+// app.use(cors());
  
 app.use(helmet());
  
@@ -84,6 +85,10 @@ app.post('/characters/new', (req, res, next) => {
     createCharacter(characterData, client, res);
 });
 
+app.post('/characters/delete', (req, res, next) => {
+    const characterData = JSON.parse(req.body.params);
+    deleteCharacter(characterData, client, res);
+});
 
 // ITEMS
 app.get('/itens', (req, res, next) => {

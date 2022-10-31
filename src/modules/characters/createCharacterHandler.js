@@ -27,6 +27,7 @@ const createCharacterHandler = (characterData, client, resp) => {
     client.query(queryText, [name, playerId, classData.portrait, classData.model, classId, raceId, JSON.stringify(classData.attributes)], (err, res) => {
         console.log("RES: ", res);
         console.log("ERR: ", err);
+        resp.status(200);
     }); 
 }
 
