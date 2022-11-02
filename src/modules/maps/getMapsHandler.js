@@ -1,7 +1,8 @@
-const returnSelectedMaps = require('../../codedData/maps');
+const mapsMethods = require('../../codedData/maps');
 
-const mapsHandler = (resp) => {
-    resp.status(200).json({ maps:  returnSelectedMaps("all")});
+const getMapsHandler = (resp) => {
+    console.log(mapsMethods);
+    resp.status(200).json({ maps:  mapsMethods.returnSelectedMaps("all")});
 }
 
-module.exports = mapsHandler;
+module.exports = getMapsHandler;

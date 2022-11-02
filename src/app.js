@@ -20,6 +20,8 @@ const updateCharacterSkills = require('./modules/skills/updateCharacterSkillsHan
 
 const getTraits = require('./modules/traits/getTraitsHandler')
 const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHandler');
+
+const createPveBattle = require('./modules/battle/createPveBattleHandler');
  
 const app = express();
  
@@ -131,6 +133,13 @@ app.get('/traits', (req, res, next) => {
 app.put('/traits/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
     updateCharacterTraits(queryParams, client, res);
+});
+
+// BATTLE
+
+app.post('/battle-start', (req, res, next) => {
+    const battleData = JSON.parse(req.body.params);
+    createPveBattle(battleData, client, res);
 });
 
 module.exports = app;

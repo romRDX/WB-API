@@ -75,3 +75,7 @@ UPDATE wb_player_characters SET experience = 0 WHERE id = 1;
 SELECT * FROM wb_player_characters WHERE id = 1;
 
 DELETE FROM wb_player_characters WHERE id = 1;
+
+
+-- turns  [[123,1],[321,1],[123,4],[321,1]]
+CREATE TABLE wb_pve_battle (id SERIAL, player_id INT, character_id INT, monster_id NUMERIC, stage_id NUMERIC, turns VARCHAR(255), PRIMARY KEY (id), FOREIGN KEY (player_id) REFERENCES wb_user(id), FOREIGN KEY (character_id) REFERENCES wb_player_characters(id));
