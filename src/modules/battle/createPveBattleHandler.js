@@ -13,7 +13,8 @@ const createPveBattleHandler = (battleData, client, resp) => {
     //     resp.status(200).json({ success: true, battleId: 1, monsterData });
     // });
 
-    resp.status(200).json({ success: false });
+    // TESTE
+    resp.status(200).json({ success: true, battleId: 1, monsters });
 }
 
 module.exports = createPveBattleHandler;

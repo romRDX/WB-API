@@ -3,8 +3,8 @@ const monsters = [
     {
         id: 1,
         name: "Monster 1",
-        attributes: {},
-        itens: {},
+        attributes: { STR: 1, DEX: 1, INT, AGI: 1, TOU: 1, CON: 1 },
+        // itens: {},
         level: 1,
         model: "https://i.ibb.co/nrg9Czq/bear.png",
         portrait: "https://i.ibb.co/nrg9Czq/bear.png",
@@ -29,8 +29,8 @@ const monsters = [
     {
         id: 2,
         name: "Monster 2",
-        attributes: {},
-        itens: {},
+        attributes: { STR: 1, DEX: 1, INT, AGI: 1, TOU: 1, CON: 1 },
+        // itens: {},
         level: 1,
         model: "https://i.ibb.co/nrg9Czq/bear.png",
         portrait: "https://i.ibb.co/nrg9Czq/bear.png",
@@ -55,8 +55,8 @@ const monsters = [
     {
         id: 3,
         name: "Monster 3",
-        attributes: {},
-        itens: {},
+        attributes: { STR: 1, DEX: 1, INT, AGI: 1, TOU: 1, CON: 1 },
+        // itens: {},
         level: 1,
         model: "https://i.ibb.co/nrg9Czq/bear.png",
         portrait: "https://i.ibb.co/nrg9Czq/bear.png",
@@ -81,8 +81,8 @@ const monsters = [
     {
         id: 4,
         name: "Monster 4 | Boss",
-        attributes: {},
-        itens: {},
+        attributes: { STR: 1, DEX: 1, INT, AGI: 1, TOU: 1, CON: 1 },
+        // itens: {},
         level: 1,
         model: "https://i.ibb.co/LxDbqky/dragon.webp",
         portrait: "https://i.ibb.co/LxDbqky/dragon.webp",
