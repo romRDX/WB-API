@@ -22,6 +22,7 @@ const getTraits = require('./modules/traits/getTraitsHandler')
 const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHandler');
 
 const createPveBattle = require('./modules/battle/createPveBattleHandler');
+const actionPveBattle = require('./modules/battle/actionPveBattleHandler');
  
 const app = express();
  
@@ -86,7 +87,8 @@ app.get('/races', (req, res, next) => {
 
 // CHARACTERS
 app.get('/characters', (req, res, next) => {
-    const userId = JSON.parse(req.query[0]).userId;
+    console.log("RDX: ", req.query);
+    const userId = req.query.userId ? req.query.userId : JSON.parse(req.query[0]).userId;
     getMyCharacters(userId, client, res);
 });
 
@@ -115,7 +117,7 @@ app.put('/itens/update', (req, res, next) => {
 
 // SKILLS
 app.get('/skills', (req, res, next) => {
-    getSkills(res);
+    getSkills(res, req.query);
 });
 
 app.put('/skills/update', (req, res, next) => {
@@ -140,6 +142,11 @@ app.put('/traits/update', (req, res, next) => {
 app.post('/battle-start', (req, res, next) => {
     const battleData = JSON.parse(req.body.params);
     createPveBattle(battleData, client, res);
+});
+
+app.post('/battle-action', (req, res, next) => {
+    const battleData = JSON.parse(req.body.params);
+    actionPveBattle(battleData, client, res, pveActiveBattle);
 });
 
 module.exports = app;
