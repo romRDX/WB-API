@@ -12,7 +12,7 @@ const myCharactersHandler = (userId, client, resp) => {
             
             const characters = res.rows.map((char) => {
                 
-                const atributes = JSON.parse(char.atributes);
+                const attributes = JSON.parse(char.atributes);
                 const skillsIds = JSON.parse(char.skills_id);
                 const traitsIds = JSON.parse(char.traits_id);
                 const itensIds = JSON.parse(char.itens_id);
@@ -39,7 +39,7 @@ const myCharactersHandler = (userId, client, resp) => {
                 
                 return {
                     ...char,
-                    atributes,
+                    attributes,
                     skills,
                     traits,
                     itens,

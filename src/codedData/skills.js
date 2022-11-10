@@ -5,10 +5,10 @@ const skills = [
         icon: 'https://i.ibb.co/CKyf7Jy/Ability-druid-ravage.webp',
         description: 'Um corte que faz os inimigos sangrarem.',
         energy: 50,
-        value: 30,
-        type: ["damage", "debuff"],
+        value: 1.2,
+        type: ["DAMAGE", "DEBUFF"],
         cooldown: 0,
-        effect: { type: "damage-status", value: 30, turns: 3}
+        effect: { type: "damage-status", value: 1.3, turns: 3}
     },
     {
         id: 2,
@@ -16,8 +16,8 @@ const skills = [
         icon: 'https://i.ibb.co/zb3TCRC/Ability-ardenweald-paladin-spring.webp',
         description: 'Use suas forças primais para se curar.',
         energy: 50,
-        value: 50,
-        type: ["heal"],
+        value: 1.5,
+        type: ["HEAL","CON"],
         cooldown: 1,
         effect: null
     },
@@ -27,8 +27,8 @@ const skills = [
         icon: 'https://i.ibb.co/55Prh2w/Ability-druid-swipe.webp',
         description: 'Um ataque com garras de grande força.',
         energy: 50,
-        value: 50,
-        type: ["damage"],
+        value: 1.5,
+        type: ["DAMAGE"],
         cooldown: 0,
         effect: null
     },
@@ -39,9 +39,9 @@ const skills = [
         description: 'Liberte sua fúria!',
         energy: 50,
         value: 0,
-        type: ["buff"],
+        type: ["BUFF"],
         cooldown: 2,
-        effect: { type: "DMG", value: 1.2 }
+        effect: { type: "DMG", value: 1.2, turns: 3 }
     },
 ];
 

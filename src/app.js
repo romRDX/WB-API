@@ -21,6 +21,8 @@ const updateCharacterSkills = require('./modules/skills/updateCharacterSkillsHan
 const getTraits = require('./modules/traits/getTraitsHandler')
 const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHandler');
 
+const getMonsters = require('./modules/monsters/getMonstersHandler')
+
 const createPveBattle = require('./modules/battle/createPveBattleHandler');
 const actionPveBattle = require('./modules/battle/actionPveBattleHandler');
  
@@ -136,6 +138,13 @@ app.put('/traits/update', (req, res, next) => {
     const queryParams = JSON.parse(req.body.params);
     updateCharacterTraits(queryParams, client, res);
 });
+
+
+// MONSTERS
+app.get('/monsters', (req, res, next) => {
+    getMonsters(res, req.query);
+});
+
 
 // BATTLE
 
