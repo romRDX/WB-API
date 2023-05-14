@@ -79,3 +79,5 @@ DELETE FROM wb_player_characters WHERE id = 1;
 
 -- turns  [[123,1],[321,1],[123,4],[321,1]]
 CREATE TABLE wb_pve_battle (id SERIAL, player_id INT, character_id INT, monster_id NUMERIC, stage_id NUMERIC, turns VARCHAR(255), PRIMARY KEY (id), FOREIGN KEY (player_id) REFERENCES wb_user(id), FOREIGN KEY (character_id) REFERENCES wb_player_characters(id));
+
+CREATE TABLE wb_pvp_battle (id SERIAL, player_1_id INT, player_1_character_id INT, player_2_id INT, player_2_character_id INT, turns VARCHAR(255), PRIMARY KEY (id), FOREIGN KEY (player_1_id) REFERENCES wb_user(id), FOREIGN KEY (player_2_id) REFERENCES wb_user(id), FOREIGN KEY (player_1_character_id) REFERENCES wb_player_characters(id), FOREIGN KEY (player_2_character_id) REFERENCES wb_player_characters(id));

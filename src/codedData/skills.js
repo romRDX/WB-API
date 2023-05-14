@@ -17,7 +17,7 @@ const skills = [
         description: 'Use suas forças primais para se curar.',
         energy: 40,
         value: 1.5,
-        type: ["HEAL","CON"],
+        type: ["HEAL"],
         cooldown: 1,
         effect: null
     },

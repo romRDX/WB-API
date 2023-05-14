@@ -23,8 +23,10 @@ const updateCharacterTraits = require('./modules/traits/updateCharacterTraitsHan
 
 const getMonsters = require('./modules/monsters/getMonstersHandler')
 
-const createPveBattle = require('./modules/battle/createPveBattleHandler');
-const actionPveBattle = require('./modules/battle/actionPveBattleHandler');
+const createPveBattle = require('./modules/battle/pve/createPveBattleHandler');
+const actionPveBattle = require('./modules/battle/pve/actionPveBattleHandler');
+
+const createPvpBattle = require('./modules/battle/pvp/createPvpBattleHandler');
  
 const app = express();
  
@@ -156,6 +158,13 @@ app.post('/battle-start', (req, res, next) => {
 app.post('/battle-action', (req, res, next) => {
     const battleData = JSON.parse(req.body.params);
     actionPveBattle(battleData, client, res, pveActiveBattle);
+});
+
+
+// PVP BATTLE
+app.post('/pvp-battle-start', (req, res, next) => {
+    const battleData = JSON.parse(req.body.params);
+    createPvpBattle(battleData, client, res);
 });
 
 module.exports = app;

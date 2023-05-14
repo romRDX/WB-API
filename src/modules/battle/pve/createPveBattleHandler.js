@@ -1,5 +1,5 @@
-const { returnMonstersIdsFromStage } = require("../../codedData/maps");
-const returnSelectedMonsters = require("../../codedData/monsters");
+const { returnMonstersIdsFromStage } = require("../../../codedData/maps");
+const returnSelectedMonsters = require("../../../codedData/monsters");
 
 const createPveBattleHandler = (battleData, client, resp) => {
 
@@ -8,7 +8,7 @@ const createPveBattleHandler = (battleData, client, resp) => {
     const monster = returnSelectedMonsters(returnMonstersIdsFromStage(battleData.stageId))[0];
 
     delete monster.action;
-    // DESCOMENTAR QUANDO ESTIVER PRONTO
+    // DESCOMENTAR QUANDO ESTIVER PRONTO - NÃO ESTA SALVANDO A BATALHA NO BANCO
     // client.query(queryText, [battleData.playerId, battleData.characterId, monsters.id, battleData.stageId], (err, res) => {
     //     resp.status(200).json({ success: true, battleId: 1, monsterData });
     // });
