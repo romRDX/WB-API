@@ -1,7 +1,7 @@
 const races = [
     {
         id: 2,
-        name: 'Felinos',
+        name: 'Felinos-x',
         icon: 'https://i.ibb.co/8xjqJN4/lion.png',
         description: 'exemplo descrição teste 1',
         // traits: [{}],
@@ -47,7 +47,7 @@ const races = [
 
     {
         id: 1,
-        name: 'Caninos',
+        name: 'Caninos-x',
         icon: 'https://i.ibb.co/82tS5ZT/wolf.png',
         description: 'exemplo descrição teste 2',
         classes: [
