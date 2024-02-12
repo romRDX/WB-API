@@ -3,7 +3,7 @@ const races = [
         id: 2,
         name: 'Felinos',
         icon: 'https://i.ibb.co/8xjqJN4/lion.png',
-        wallpaper: 'https://ibb.co/zP4S60Q',
+        wallpaper: 'https://i.ibb.co/wstp2cx/felines.jpg',
         description: 'exemplo descrição',
         // traits: [{}],
         // skills: [{}],
@@ -50,7 +50,7 @@ const races = [
         id: 1,
         name: 'Caninos',
         icon: 'https://i.ibb.co/82tS5ZT/wolf.png',
-        wallpaper: 'https://ibb.co/Qd0YxD1',
+        wallpaper: 'https://i.ibb.co/BTCgnSc/canines.jpg',
         description: 'exemplo descrição',
         classes: [
             { 
