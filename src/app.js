@@ -62,7 +62,8 @@ app.post("/login", (req, resp, next) => {
   // const queryParams = JSON.parse(req.body.params);
   const queryParams = req.body.params;
 
-  console.log("-----------------------------WFASD: ", req.body.params);
+  console.log("-----------------------------WFASD-1: ", req.body.params);
+  console.log("-----------------------------WFASD-2: ", queryParams);
 
   client.query(queryText, [queryParams.email], (err, res) => {
     if (res.rows.length !== 0) {
