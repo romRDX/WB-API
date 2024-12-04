@@ -59,8 +59,8 @@ client.connect((err) => {
 app.post("/login", (req, resp, next) => {
   const queryText = "SELECT * FROM WB_USER WHERE Email = $1;";
 
-  // const queryParams = JSON.parse(req.body.params);
-  const queryParams = req.body.params;
+  const queryParams = JSON.parse(req.body.params);
+//   const queryParams = req.body.params;
 
   console.log("-----------------------------WFASD-1: ", req.body.params);
   console.log("-----------------------------WFASD-2: ", queryParams);
